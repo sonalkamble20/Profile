@@ -69,67 +69,83 @@
 
         /* --- FRONT SIDE --- */
         .card-front {
-            display: flex; flex-direction: column; justify-content: space-between; padding: 26px 28px; height: 100%; position: relative; z-index: 5;
+            display: flex; flex-direction: column; justify-content: space-between; padding: 24px 26px; height: 100%; position: relative; z-index: 5;
+        }
+
+        .card-front-top {
+            display: flex; align-items: center; justify-content: space-between; width: 100%;
         }
 
         .logo-sk-large {
-            font-family: 'Playfair Display', serif; font-weight: 900; font-size: 38px; line-height: 0.85; letter-spacing: -0.04em;
+            font-family: 'Playfair Display', serif; font-weight: 900; font-size: 34px; line-height: 0.85; letter-spacing: -0.04em;
         }
         .logo-sk-large .s { color: var(--text-1); }
         .logo-sk-large .dot { color: var(--accent-2); }
+
+        .front-portfolio-badge {
+            font-size: 8.5px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em;
+            background: rgba(139, 103, 200, 0.12); padding: 4px 10px; border-radius: 12px;
+            border: 1px solid rgba(139, 103, 200, 0.25);
+        }
 
         .front-bottom {
             display: flex; flex-direction: column; gap: 4px;
         }
 
-        .identity-text { display: flex; flex-direction: column; gap: 2px; margin-bottom: 12px; }
+        .identity-text { display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px; }
 
         .name {
-            font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; letter-spacing: -0.02em; color: var(--text-1); line-height: 1;
+            font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; letter-spacing: -0.02em; color: var(--text-1); line-height: 1;
         }
         .title {
-            font-size: 8px; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 700; color: var(--text-2);
+            font-size: 8px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; color: var(--text-2);
         }
 
         .product-highlight {
-            border-top: 1px solid rgba(139, 103, 200, 0.25); padding-top: 12px; display: flex; flex-direction: column; gap: 2px;
+            border-top: 1px solid rgba(139, 103, 200, 0.25); padding-top: 8px; display: flex; flex-direction: column; gap: 2px;
         }
         .product-name {
-            font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; font-size: 18px; letter-spacing: 0.02em; line-height: 1.2;
+            font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; font-size: 15px; letter-spacing: 0.02em; line-height: 1.2;
         }
         .product-desc {
-            font-size: 7px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-2); opacity: 0.85;
+            font-size: 7px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-2); opacity: 0.85;
         }
 
         /* --- BACK SIDE --- */
         .card-back {
-            display: flex; align-items: center; justify-content: center; padding: 24px 28px; height: 100%;
+            display: flex; align-items: center; justify-content: center; padding: 22px 26px; height: 100%;
         }
         .back-content {
-            position: relative; z-index: 5; display: flex; width: 100%; height: 100%; gap: 24px;
+            position: relative; z-index: 5; display: flex; width: 100%; height: 100%; gap: 20px;
         }
         .back-left {
-            flex: 1.25; display: flex; flex-direction: column; justify-content: center; gap: 16px; border-right: 1px solid rgba(139, 103, 200, 0.2); padding-right: 16px;
+            flex: 1.25; display: flex; flex-direction: column; justify-content: center; gap: 12px; border-right: 1px solid rgba(139, 103, 200, 0.2); padding-right: 14px;
         }
-        .info-block { display: flex; flex-direction: column; gap: 4px; }
+        .info-block { display: flex; flex-direction: column; gap: 2px; }
         .info-title {
-            font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; font-size: 13px; line-height: 1.2;
+            font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; font-size: 12px; line-height: 1.2;
         }
-        .info-text { font-size: 7.5px; line-height: 1.6; color: var(--text-2); font-weight: 500; }
+        .info-text { font-size: 7px; line-height: 1.5; color: var(--text-2); font-weight: 500; }
+        .info-link { font-size: 6.5px; font-weight: 700; color: var(--accent); letter-spacing: 0.04em; }
         
         .back-right {
-            flex: 0.75; display: flex; flex-direction: column; justify-content: center; gap: 14px;
+            flex: 0.85; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px;
         }
         
-        /* The QR Code */
+        /* The QR Code Container */
+        .qr-container { display: flex; flex-direction: column; align-items: center; gap: 3px; }
         .qr-code {
-            width: 58px; height: 58px; border-radius: 2px; mix-blend-mode: multiply;
+            width: 54px; height: 54px; border-radius: 2px; mix-blend-mode: multiply;
+        }
+        .qr-label {
+            font-size: 5.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-2); text-align: center;
         }
 
         /* Clean Contact List */
-        .contact-list { display: flex; flex-direction: column; gap: 3px; }
-        .contact-value { font-size: 8px; font-weight: 600; color: var(--text-1); letter-spacing: 0.02em; }
-        .contact-location { font-size: 6.5px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 4px; }
+        .contact-list { display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: center; }
+        .contact-website { font-size: 8px; font-weight: 800; color: var(--accent); letter-spacing: 0.03em; }
+        .contact-value { font-size: 7.5px; font-weight: 600; color: var(--text-1); letter-spacing: 0.01em; }
+        .contact-location { font-size: 6px; font-weight: 700; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 2px; }
 
         @media print {
             body { background: white; padding: 0; }
@@ -146,18 +162,20 @@
         <div class="noise-overlay"></div>
         <div class="card-front">
             
-            <div class="logo-sk-large"><span class="s">S</span><span class="k gradient-text">K</span><span class="dot">.</span></div>
+            <div class="card-front-top">
+                <div class="logo-sk-large"><span class="s">S</span><span class="k gradient-text">K</span><span class="dot">.</span></div>
+                <div class="front-portfolio-badge">sonalkamble.dev</div>
+            </div>
             
             <div class="front-bottom">
                 <div class="identity-text">
                     <div class="name">Sonal Kamble</div>
-                    <div class="title">Founder & Lead Architect</div>
+                    <div class="title">Lead Software Engineer · Full-Stack &amp; AI Systems</div>
                 </div>
 
                 <div class="product-highlight">
-                    <div class="product-name gradient-text">Aura.</div>
-                    <div class="product-desc">Relational Intelligence Engine</div>
-                    <div class="product-link">theauragroup.tech</div>
+                    <div class="product-name gradient-text">AI Systems &amp; Modern Architecture</div>
+                    <div class="product-desc">Aura AI Engine · Enterprise Digital Platforms</div>
                 </div>
             </div>
 
@@ -174,23 +192,28 @@
                 <!-- Info Columns -->
                 <div class="back-left">
                     <div class="info-block">
-                        <div class="info-title gradient-text">Aura</div>
-                        <div class="info-text">Research-backed behavioral algorithms bridging the empathy gap through clinical cross-correlation.</div>
+                        <div class="info-title gradient-text">Aura AI Engine</div>
+                        <div class="info-text">Google Gemini &amp; STOMP WebSockets bridging clinical psychology with real-time sync.</div>
                         <div class="info-link">theauragroup.tech</div>
                     </div>
                     <div class="info-block">
-                        <div class="info-title gradient-text">Sunny Stack</div>
-                        <div class="info-text">Enterprise-grade legacy modernization resulting in zero-cost operational infrastructure.</div>
+                        <div class="info-title gradient-text">Enterprise Modernization</div>
+                        <div class="info-text">Production Java 21, Spring Boot 3 &amp; SSR platforms with 85% payload cuts.</div>
+                        <div class="info-link">littleoneslearningcenter.org</div>
                     </div>
                 </div>
                 
                 <!-- Contact & QR Column -->
                 <div class="back-right">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sonalkamble.dev&color=1e0a14&bgcolor=fdf9f7&margin=0" alt="QR Code" class="qr-code">
+                    <div class="qr-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sonalkamble.dev&color=1e0a14&bgcolor=fdf9f7&margin=0" alt="QR Code" class="qr-code">
+                        <div class="qr-label">Scan For Portfolio</div>
+                    </div>
                     <div class="contact-list">
-                        <div class="contact-value">845-745-6662</div>
+                        <div class="contact-website">sonalkamble.dev</div>
                         <div class="contact-value">sonal@sonalkamble.dev</div>
-                        <div class="contact-location">New York, USA</div>
+                        <div class="contact-value">845-745-6662</div>
+                        <div class="contact-location">New York, USA · SUNY New Paltz</div>
                     </div>
                 </div>
 
