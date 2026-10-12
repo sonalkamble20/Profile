@@ -3,33 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sonal Kamble — Business Card</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <title>Sonal Kamble — GHC 2026 Executive Business Cards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #fdf9f7; /* Cream */
             --text-1: #1e0a14; /* Plum */
-            --text-2: #5c4050;
+            --text-2: #5c4050; /* Muted Plum */
             --accent: #8b67c8; /* Lavender */
             --accent-2: #c0677a; /* Dusky Rose */
+            --navy: #0c2c6e; /* High-contrast navy */
             --border: rgba(30, 10, 20, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #d1cbc7;
+            background-color: #e5e0dc;
             font-family: 'Inter', sans-serif;
+            color: var(--text-1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
-            gap: 50px;
-            padding: 40px;
+            padding: 40px 20px 80px;
+            gap: 40px;
         }
 
-        /* --- THE SIGNATURE GRADIENT --- */
+        /* --- CONTROLS / TABS (Screen Only) --- */
+        .header-bar {
+            text-align: center;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .header-bar h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--text-1);
+        }
+        .header-bar p {
+            font-size: 13px;
+            color: var(--text-2);
+            line-height: 1.5;
+        }
+        .tab-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+        .tab-btn {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-2);
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+        .tab-btn:hover {
+            color: var(--text-1);
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+        .tab-btn.active {
+            background: var(--text-1);
+            color: #ffffff;
+            border-color: var(--text-1);
+            box-shadow: 0 4px 10px rgba(30, 10, 20, 0.2);
+        }
+        .print-hint {
+            font-size: 11px;
+            color: var(--text-2);
+            background: rgba(139, 103, 200, 0.12);
+            padding: 6px 14px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        /* --- SIGNATURE GRADIENT --- */
         .gradient-text {
             background: linear-gradient(135deg, var(--accent), var(--accent-2));
             -webkit-background-clip: text;
@@ -39,175 +99,520 @@
             display: inline-block;
         }
 
-        /* --- THE CARD BASE --- */
-        .business-card {
-            width: 3.5in; height: 2in;
-            color: var(--text-1);
-            position: relative;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-radius: 4px;
-            overflow: hidden;
-            background-color: var(--bg);
+        /* --- CARD CONTAINER --- */
+        .showcase-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+        }
+        .card-pair {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-2);
+            margin-bottom: 8px;
+            text-align: center;
         }
 
-        /* --- BACKGROUND ART (Textured Canvas) --- */
+        /* --- THE CARD BASE (3.5" x 2.0" Standard US Card) --- */
+        .business-card {
+            width: 3.5in;
+            height: 2.0in;
+            position: relative;
+            background-color: var(--bg);
+            color: var(--text-1);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .business-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18), 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- CANVAS & NOISE OVERLAY --- */
         .bg-canvas {
             position: absolute; inset: 0; z-index: 0; background: var(--bg);
         }
         .bg-canvas::before {
             content: ''; position: absolute; inset: -50%;
             background: 
-                radial-gradient(ellipse at 20% 30%, rgba(139, 103, 200, 0.25) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(192, 103, 122, 0.2) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(253, 249, 247, 0.8) 0%, transparent 100%);
+                radial-gradient(ellipse at 20% 25%, rgba(139, 103, 200, 0.28) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 85%, rgba(192, 103, 122, 0.22) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(253, 249, 247, 0.85) 0%, transparent 100%);
             filter: blur(40px);
         }
         .noise-overlay {
-            position: absolute; inset: 0; z-index: 1; opacity: 0.25; mix-blend-mode: multiply; pointer-events: none;
+            position: absolute; inset: 0; z-index: 1; opacity: 0.22; mix-blend-mode: multiply; pointer-events: none;
             background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
         }
 
-        /* --- FRONT SIDE --- */
-        .card-front {
-            display: flex; flex-direction: column; justify-content: space-between; padding: 26px 28px; height: 100%; position: relative; z-index: 5;
+        /* ==============================================================
+           DESIGN A: THE FOUNDER & ARCHITECT CLASSIC (Beloved Original)
+           ============================================================== */
+        .card-a-front {
+            display: flex; flex-direction: column; justify-content: space-between;
+            padding: 24px 26px; height: 100%; position: relative; z-index: 5;
+        }
+        .logo-sk-classic {
+            font-family: 'Playfair Display', serif; font-weight: 900; font-size: 36px; line-height: 0.85; letter-spacing: -0.04em;
+        }
+        .logo-sk-classic .s { color: var(--text-1); }
+        .logo-sk-classic .dot { color: var(--accent-2); }
+
+        .card-a-name {
+            font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; letter-spacing: -0.02em; line-height: 1;
+        }
+        .card-a-title {
+            font-size: 8px; text-transform: uppercase; letter-spacing: 0.22em; font-weight: 700; color: var(--text-2); margin-top: 3px;
+        }
+        .card-a-highlight {
+            border-top: 1px solid rgba(139, 103, 200, 0.25); padding-top: 10px; margin-top: 8px;
+            display: flex; flex-direction: column; gap: 2px;
+        }
+        .card-a-prodname {
+            font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; font-size: 17px; line-height: 1.15;
+        }
+        .card-a-proddesc {
+            font-size: 7px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-2);
+        }
+        .card-a-link {
+            font-size: 7px; font-weight: 700; color: var(--accent); letter-spacing: 0.05em; margin-top: 2px;
         }
 
-        .logo-sk-large {
-            font-family: 'Playfair Display', serif; font-weight: 900; font-size: 38px; line-height: 0.85; letter-spacing: -0.04em;
+        .card-a-back {
+            display: flex; align-items: center; justify-content: center; padding: 22px 24px; height: 100%; position: relative; z-index: 5;
         }
-        .logo-sk-large .s { color: var(--text-1); }
-        .logo-sk-large .dot { color: var(--accent-2); }
-
-        .front-bottom {
-            display: flex; flex-direction: column; gap: 4px;
+        .back-split {
+            display: flex; width: 100%; height: 100%; gap: 18px; align-items: center;
         }
-
-        .identity-text { display: flex; flex-direction: column; gap: 2px; margin-bottom: 12px; }
-
-        .name {
-            font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; letter-spacing: -0.02em; color: var(--text-1); line-height: 1;
+        .back-split-left {
+            flex: 1.35; display: flex; flex-direction: column; justify-content: center; gap: 12px;
+            border-right: 1px solid rgba(139, 103, 200, 0.22); padding-right: 14px;
         }
-        .title {
-            font-size: 8px; text-transform: uppercase; letter-spacing: 0.25em; font-weight: 700; color: var(--text-2); white-space: nowrap;
-        }
-
-        .product-highlight {
-            border-top: 1px solid rgba(139, 103, 200, 0.25); padding-top: 12px; display: flex; flex-direction: column; gap: 2px;
-        }
-        .product-name {
-            font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; font-size: 18px; letter-spacing: 0.02em; line-height: 1.2;
-        }
-        .product-desc {
-            font-size: 7px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.22em; color: var(--text-2); opacity: 0.85; white-space: nowrap;
-        }
-        .product-link {
-            font-size: 7.5px; font-weight: 700; color: var(--accent); letter-spacing: 0.05em; margin-top: 2px;
-        }
-
-        /* --- BACK SIDE --- */
-        .card-back {
-            display: flex; align-items: center; justify-content: center; padding: 24px 28px; height: 100%;
-        }
-        .back-content {
-            position: relative; z-index: 5; display: flex; width: 100%; height: 100%; gap: 24px;
-        }
-        .back-left {
-            flex: 1.25; display: flex; flex-direction: column; justify-content: center; gap: 16px; border-right: 1px solid rgba(139, 103, 200, 0.2); padding-right: 16px;
-        }
-        .info-block { display: flex; flex-direction: column; gap: 4px; }
-        .info-title {
+        .card-a-block { display: flex; flex-direction: column; gap: 2px; }
+        .card-a-block-title {
             font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; font-size: 13px; line-height: 1.2;
         }
-        .info-text { font-size: 7.5px; line-height: 1.6; color: var(--text-2); font-weight: 500; }
-        .info-link { font-size: 7px; font-weight: 700; color: var(--accent); letter-spacing: 0.04em; }
-        
-        .back-right {
-            flex: 0.75; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px;
+        .card-a-block-desc { font-size: 7px; line-height: 1.5; color: var(--text-2); font-weight: 500; }
+        .card-a-block-link { font-size: 6.5px; font-weight: 700; color: var(--accent); letter-spacing: 0.04em; }
+
+        .back-split-right {
+            flex: 0.85; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px;
         }
-        
-        /* The QR Code */
-        .qr-container { display: flex; flex-direction: column; align-items: center; gap: 3px; }
-        .qr-code {
-            width: 58px; height: 58px; border-radius: 2px; mix-blend-mode: multiply;
+        .qr-box {
+            display: flex; flex-direction: column; align-items: center; gap: 3px;
         }
-        .qr-label {
+        .qr-img {
+            width: 54px; height: 54px; border-radius: 3px; mix-blend-mode: multiply;
+        }
+        .qr-caption {
             font-size: 5.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-2); text-align: center;
         }
+        .card-a-contacts {
+            display: flex; flex-direction: column; gap: 2px; text-align: center; width: 100%;
+        }
+        .card-a-contact-item { font-size: 7.5px; font-weight: 600; color: var(--text-1); letter-spacing: 0.01em; }
+        .card-a-contact-sub { font-size: 6px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 2px; }
 
-        /* Clean Contact List */
-        .contact-list { display: flex; flex-direction: column; gap: 3px; width: 100%; text-align: center; }
-        .contact-value { font-size: 8px; font-weight: 600; color: var(--text-1); letter-spacing: 0.02em; }
-        .contact-location { font-size: 6.5px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 4px; }
+        /* ==============================================================
+           DESIGN B: THE RECRUITER MAGNET (Big Tech SWE Alignment)
+           ============================================================== */
+        .card-b-front {
+            display: flex; flex-direction: column; justify-content: space-between;
+            padding: 22px 24px; height: 100%; position: relative; z-index: 5;
+        }
+        .card-b-top-row {
+            display: flex; justify-content: space-between; align-items: flex-start; width: 100%;
+        }
+        .card-b-badge {
+            font-size: 6.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+            color: var(--accent); background: rgba(139, 103, 200, 0.12); border: 1px solid rgba(139, 103, 200, 0.25);
+            padding: 3px 8px; border-radius: 10px;
+        }
+        .card-b-name {
+            font-family: 'Playfair Display', serif; font-size: 23px; font-weight: 900; letter-spacing: -0.02em; line-height: 1;
+        }
+        .card-b-title {
+            font-size: 7.5px; text-transform: uppercase; letter-spacing: 0.18em; font-weight: 800; color: var(--text-2); margin-top: 3px;
+        }
+        .card-b-techpills {
+            display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap;
+        }
+        .techpill {
+            font-size: 6px; font-weight: 700; color: var(--text-1); background: rgba(30, 10, 20, 0.05);
+            border: 1px solid rgba(30, 10, 20, 0.08); padding: 2px 6px; border-radius: 4px; letter-spacing: 0.02em;
+        }
+        .card-b-flagships {
+            border-top: 1px solid rgba(139, 103, 200, 0.25); padding-top: 8px; margin-top: 8px;
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
+        .card-b-proj {
+            display: flex; flex-direction: column; gap: 1px;
+        }
+        .card-b-proj-title {
+            font-family: 'Playfair Display', serif; font-weight: 700; font-size: 13px; line-height: 1.1;
+        }
+        .card-b-proj-sub {
+            font-size: 6.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-2);
+        }
 
+        .card-b-back {
+            display: flex; align-items: center; justify-content: center; padding: 20px 24px; height: 100%; position: relative; z-index: 5;
+        }
+        .card-b-back-content {
+            display: flex; width: 100%; height: 100%; gap: 18px; align-items: center;
+        }
+        .card-b-left {
+            flex: 1.4; display: flex; flex-direction: column; justify-content: center; gap: 10px;
+            border-right: 1px solid rgba(139, 103, 200, 0.22); padding-right: 14px;
+        }
+        .card-b-metric-item { display: flex; flex-direction: column; gap: 2px; }
+        .card-b-metric-header {
+            display: flex; justify-content: space-between; align-items: baseline;
+        }
+        .card-b-metric-title {
+            font-family: 'Playfair Display', serif; font-weight: 700; font-size: 12px; line-height: 1.1;
+        }
+        .card-b-metric-tag {
+            font-family: 'JetBrains Mono', monospace; font-size: 6px; font-weight: 700; color: var(--accent);
+        }
+        .card-b-metric-desc {
+            font-size: 6.8px; line-height: 1.45; color: var(--text-2); font-weight: 500;
+        }
+        .card-b-right {
+            flex: 0.85; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px;
+        }
+
+        /* ==============================================================
+           DESIGN C: EDITORIAL PRESTIGE (High Contrast & Minimalism)
+           ============================================================== */
+        .card-c-front {
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 24px; height: 100%; position: relative; z-index: 5; gap: 8px;
+        }
+        .logo-sk-c {
+            font-family: 'Playfair Display', serif; font-weight: 900; font-size: 42px; line-height: 0.85; letter-spacing: -0.04em;
+            margin-bottom: 4px;
+        }
+        .logo-sk-c .s { color: var(--text-1); }
+        .logo-sk-c .dot { color: var(--accent-2); }
+        .card-c-name {
+            font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; letter-spacing: -0.02em; line-height: 1;
+        }
+        .card-c-title {
+            font-size: 7.5px; text-transform: uppercase; letter-spacing: 0.25em; font-weight: 700; color: var(--text-2);
+        }
+        .card-c-divider {
+            width: 40px; height: 1.5px; background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            margin: 4px auto; border-radius: 2px;
+        }
+        .card-c-sub {
+            font-size: 7px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-2);
+        }
+
+        .card-c-back {
+            display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; height: 100%; position: relative; z-index: 5;
+        }
+        .card-c-left {
+            display: flex; flex-direction: column; justify-content: center; gap: 8px;
+        }
+        .card-c-prod { display: flex; flex-direction: column; gap: 1px; }
+        .card-c-prod-name { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; font-style: italic; }
+        .card-c-prod-desc { font-size: 6.8px; color: var(--text-2); font-weight: 500; }
+
+        /* ==============================================================
+           PRINT MEDIA OPTIMIZATION (Standard 3.5in x 2in Exact Die Cut)
+           ============================================================== */
         @media print {
-            body { background: white; padding: 0; }
-            .business-card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; margin-bottom: 20px; }
-            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            body {
+                background: #ffffff !important;
+                padding: 0 !important;
+                gap: 0 !important;
+            }
+            .header-bar, .tab-controls, .card-label, .print-hint {
+                display: none !important;
+            }
+            .showcase-section {
+                display: none !important;
+            }
+            .showcase-section.active-section {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px !important;
+                page-break-after: avoid;
+            }
+            .card-pair {
+                display: block !important;
+                gap: 0 !important;
+            }
+            .business-card {
+                box-shadow: none !important;
+                border: 0.5pt solid #cccccc !important;
+                page-break-inside: avoid !important;
+                margin: 0 auto 30px !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- FRONT -->
-    <div class="business-card">
-        <div class="bg-canvas"></div>
-        <div class="noise-overlay"></div>
-        <div class="card-front">
-            
-            <div class="logo-sk-large"><span class="s">S</span><span class="k gradient-text">K</span><span class="dot">.</span></div>
-            
-            <div class="front-bottom">
-                <div class="identity-text">
-                    <div class="name">Sonal Kamble</div>
-                    <div class="title">Founder &amp; Lead Architect</div>
-                </div>
+    <!-- SCREEN CONTROLS -->
+    <div class="header-bar">
+        <h1>Sonal Kamble — Executive Business Cards</h1>
+        <p>Specially architected for <strong>GHC 2026</strong>. Review the 3 recruiter-calibrated designs below, click the tabs to preview, and print on 3.5" × 2.0" cardstock.</p>
+        
+        <div class="tab-controls">
+            <button class="tab-btn active" onclick="switchTab('design-b')">Option 1: Recruiter Magnet (Recommended for Big Tech)</button>
+            <button class="tab-btn" onclick="switchTab('design-a')">Option 2: Founder &amp; Architect (Beloved Classic)</button>
+            <button class="tab-btn" onclick="switchTab('design-c')">Option 3: Editorial Prestige (Minimalist)</button>
+        </div>
+        <div class="print-hint">
+            💡 <strong>Print Ready:</strong> Press <code>Cmd + P</code> anytime. It automatically formats to standard 3.5" × 2" cards.
+        </div>
+    </div>
 
-                <div class="product-highlight">
-                    <div class="product-name gradient-text">Aura.</div>
-                    <div class="product-desc">Relational Intelligence Engine</div>
-                    <div class="product-link">theauragroup.tech</div>
+    <!-- ===================================================================
+         DESIGN B: THE RECRUITER MAGNET (RECOMMENDED FOR GHC BIG TECH)
+         Directly answers: Who she is, what roles she fits, and her 2 flagships
+         =================================================================== -->
+    <div id="design-b" class="showcase-section active-section">
+        <div class="card-label">Design 1: The Recruiter Magnet (Optimized for FAANG / Big Tech Engineers &amp; Managers)</div>
+        <div class="card-pair">
+            
+            <!-- FRONT -->
+            <div class="business-card">
+                <div class="bg-canvas"></div>
+                <div class="noise-overlay"></div>
+                <div class="card-b-front">
+                    <div class="card-b-top-row">
+                        <div class="logo-sk-classic"><span class="s">S</span><span class="k gradient-text">K</span><span class="dot">.</span></div>
+                        <div class="card-b-badge">MS CS · GPA 3.80</div>
+                    </div>
+
+                    <div>
+                        <div class="card-b-name">Sonal Kamble</div>
+                        <div class="card-b-title">Lead Software Engineer &amp; Architect</div>
+                        <div class="card-b-techpills">
+                            <span class="techpill">Java 21</span>
+                            <span class="techpill">Spring Boot 3</span>
+                            <span class="techpill">WebSockets</span>
+                            <span class="techpill">Docker</span>
+                            <span class="techpill">Gemini AI</span>
+                        </div>
+                    </div>
+
+                    <div class="card-b-flagships">
+                        <div class="card-b-proj">
+                            <div class="card-b-proj-title gradient-text">Aura</div>
+                            <div class="card-b-proj-sub">Relational AI Engine</div>
+                        </div>
+                        <div class="card-b-proj" style="text-align: right;">
+                            <div class="card-b-proj-title gradient-text">Sunny Stack</div>
+                            <div class="card-b-proj-sub">Zero-Cost Modernization</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BACK -->
+            <div class="business-card">
+                <div class="bg-canvas" style="transform: scaleX(-1) scaleY(-1);"></div>
+                <div class="noise-overlay"></div>
+                <div class="card-b-back">
+                    <div class="card-b-back-content">
+                        
+                        <!-- Left: Deep Technical Proof -->
+                        <div class="card-b-left">
+                            <div class="card-b-metric-item">
+                                <div class="card-b-metric-header">
+                                    <span class="card-b-metric-title gradient-text">Aura AI Engine</span>
+                                    <span class="card-b-metric-tag">theauragroup.tech</span>
+                                </div>
+                                <div class="card-b-metric-desc">Real-time behavioral algorithms using Google Gemini &amp; STOMP WebSockets for zero-latency synchronization.</div>
+                            </div>
+
+                            <div class="card-b-metric-item">
+                                <div class="card-b-metric-header">
+                                    <span class="card-b-metric-title gradient-text">Sunny Stack</span>
+                                    <span class="card-b-metric-tag">littleoneslearningcenter.org</span>
+                                </div>
+                                <div class="card-b-metric-desc">Production Java 21 &amp; SSR platform replacing 20-yr legacy WordPress with 85% reduced network payload.</div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Actionable Contact & QR -->
+                        <div class="card-b-right">
+                            <div class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sonalkamble.dev&color=1e0a14&bgcolor=fdf9f7&margin=0" alt="QR Code" class="qr-img">
+                                <div class="qr-caption">Scan for Portfolio</div>
+                            </div>
+                            <div class="card-a-contacts">
+                                <div class="card-a-contact-item">sonal@sonalkamble.dev</div>
+                                <div class="card-a-contact-item">845-745-6662</div>
+                                <div class="card-a-contact-sub">New York, NY · SUNY New Paltz</div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- BACK -->
-    <div class="business-card">
-        <div class="bg-canvas" style="transform: scaleX(-1) scaleY(-1);"></div>
-        <div class="noise-overlay"></div>
-        <div class="card-back">
-            <div class="back-content">
-                
-                <!-- Info Columns -->
-                <div class="back-left">
-                    <div class="info-block">
-                        <div class="info-title gradient-text">Aura</div>
-                        <div class="info-text">Research-backed behavioral algorithms bridging the empathy gap through clinical cross-correlation.</div>
-                        <div class="info-link">theauragroup.tech</div>
-                    </div>
-                    <div class="info-block">
-                        <div class="info-title gradient-text">Sunny Stack</div>
-                        <div class="info-text">Enterprise-grade legacy modernization resulting in zero-cost operational infrastructure.</div>
-                    </div>
-                </div>
-                
-                <!-- Contact & QR Column -->
-                <div class="back-right">
-                    <div class="qr-container">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sonalkamble.dev&color=1e0a14&bgcolor=fdf9f7&margin=0" alt="QR Code" class="qr-code">
-                        <div class="qr-label">Scan For Portfolio</div>
-                    </div>
-                    <div class="contact-list">
-                        <div class="contact-value">sonal@sonalkamble.dev</div>
-                        <div class="contact-value">845-745-6662</div>
-                        <div class="contact-location">New York, USA · SUNY New Paltz</div>
-                    </div>
-                </div>
+    <!-- ===================================================================
+         DESIGN A: THE FOUNDER & ARCHITECT CLASSIC (Beloved Original)
+         =================================================================== -->
+    <div id="design-a" class="showcase-section" style="display: none;">
+        <div class="card-label">Design 2: Founder &amp; Lead Architect (Beloved Classic)</div>
+        <div class="card-pair">
+            
+            <!-- FRONT -->
+            <div class="business-card">
+                <div class="bg-canvas"></div>
+                <div class="noise-overlay"></div>
+                <div class="card-a-front">
+                    <div class="logo-sk-classic"><span class="s">S</span><span class="k gradient-text">K</span><span class="dot">.</span></div>
+                    
+                    <div>
+                        <div class="card-a-name">Sonal Kamble</div>
+                        <div class="card-a-title">Founder &amp; Lead Architect</div>
 
+                        <div class="card-a-highlight">
+                            <div class="card-a-prodname gradient-text">Aura.</div>
+                            <div class="card-a-proddesc">Relational Intelligence Engine</div>
+                            <div class="card-a-link">theauragroup.tech</div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- BACK -->
+            <div class="business-card">
+                <div class="bg-canvas" style="transform: scaleX(-1) scaleY(-1);"></div>
+                <div class="noise-overlay"></div>
+                <div class="card-a-back">
+                    <div class="back-split">
+                        
+                        <div class="back-split-left">
+                            <div class="card-a-block">
+                                <div class="card-a-block-title gradient-text">Aura</div>
+                                <div class="card-a-block-desc">Research-backed behavioral algorithms bridging the empathy gap through clinical cross-correlation.</div>
+                                <div class="card-a-block-link">theauragroup.tech</div>
+                            </div>
+                            <div class="card-a-block">
+                                <div class="card-a-block-title gradient-text">Sunny Stack</div>
+                                <div class="card-a-block-desc">Enterprise-grade legacy modernization resulting in zero-cost operational infrastructure.</div>
+                                <div class="card-a-block-link">littleoneslearningcenter.org</div>
+                            </div>
+                        </div>
+
+                        <div class="back-split-right">
+                            <div class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sonalkamble.dev&color=1e0a14&bgcolor=fdf9f7&margin=0" alt="QR Code" class="qr-img">
+                                <div class="qr-caption">Scan for Portfolio</div>
+                            </div>
+                            <div class="card-a-contacts">
+                                <div class="card-a-contact-item">sonal@sonalkamble.dev</div>
+                                <div class="card-a-contact-item">845-745-6662</div>
+                                <div class="card-a-contact-sub">New York, USA</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <!-- ===================================================================
+         DESIGN C: EDITORIAL PRESTIGE (High Contrast & Pure Minimalism)
+         =================================================================== -->
+    <div id="design-c" class="showcase-section" style="display: none;">
+        <div class="card-label">Design 3: Editorial Prestige (Minimalist Monogram)</div>
+        <div class="card-pair">
+            
+            <!-- FRONT -->
+            <div class="business-card">
+                <div class="bg-canvas"></div>
+                <div class="noise-overlay"></div>
+                <div class="card-c-front">
+                    <div class="logo-sk-c"><span class="s">S</span><span class="k gradient-text">K</span><span class="dot">.</span></div>
+                    <div class="card-c-name">Sonal Kamble</div>
+                    <div class="card-c-title">Lead Software Engineer</div>
+                    <div class="card-c-divider"></div>
+                    <div class="card-c-sub">Backend &amp; Distributed Systems</div>
+                </div>
+            </div>
+
+            <!-- BACK -->
+            <div class="business-card">
+                <div class="bg-canvas" style="transform: scaleX(-1) scaleY(-1);"></div>
+                <div class="noise-overlay"></div>
+                <div class="card-c-back">
+                    <div class="card-c-left">
+                        <div class="card-c-prod">
+                            <div class="card-c-prod-name gradient-text">Aura</div>
+                            <div class="card-c-prod-desc">Real-time relational AI engine · theauragroup.tech</div>
+                        </div>
+                        <div class="card-c-prod">
+                            <div class="card-c-prod-name gradient-text">Sunny Stack</div>
+                            <div class="card-c-prod-desc">Java 21 enterprise architecture · littleoneslearningcenter.org</div>
+                        </div>
+                        <div class="card-a-contacts" style="text-align: left; margin-top: 4px;">
+                            <div class="card-a-contact-item">sonal@sonalkamble.dev · 845-745-6662</div>
+                            <div class="card-a-contact-sub" style="margin-top: 1px;">New York, NY · SUNY New Paltz</div>
+                        </div>
+                    </div>
+
+                    <div class="qr-box">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sonalkamble.dev&color=1e0a14&bgcolor=fdf9f7&margin=0" alt="QR Code" class="qr-img">
+                        <div class="qr-caption">Scan Portfolio</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR TAB SWITCHING -->
+    <script>
+        function switchTab(designId) {
+            // Hide all sections
+            document.querySelectorAll('.showcase-section').forEach(sec => {
+                sec.style.display = 'none';
+                sec.classList.remove('active-section');
+            });
+            // Remove active from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(designId);
+            if (targetSection) {
+                targetSection.style.display = 'flex';
+                targetSection.classList.add('active-section');
+            }
+
+            // Highlight clicked button
+            event.target.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
