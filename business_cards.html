@@ -69,7 +69,7 @@
 
         /* --- FRONT SIDE --- */
         .card-front {
-            display: flex; flex-direction: column; justify-content: space-between; padding: 24px 26px; height: 100%; position: relative; z-index: 5;
+            display: flex; flex-direction: column; justify-content: space-between; padding: 24px 28px; height: 100%; position: relative; z-index: 5;
         }
 
         .card-front-top {
@@ -82,12 +82,6 @@
         .logo-sk-large .s { color: var(--text-1); }
         .logo-sk-large .dot { color: var(--accent-2); }
 
-        .front-portfolio-badge {
-            font-size: 8.5px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em;
-            background: rgba(139, 103, 200, 0.12); padding: 4px 10px; border-radius: 12px;
-            border: 1px solid rgba(139, 103, 200, 0.25);
-        }
-
         .front-bottom {
             display: flex; flex-direction: column; gap: 4px;
         }
@@ -98,7 +92,7 @@
             font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; letter-spacing: -0.02em; color: var(--text-1); line-height: 1;
         }
         .title {
-            font-size: 8px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; color: var(--text-2);
+            font-size: 7.5px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; color: var(--text-2); white-space: nowrap;
         }
 
         .product-highlight {
@@ -108,12 +102,12 @@
             font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; font-size: 15px; letter-spacing: 0.02em; line-height: 1.2;
         }
         .product-desc {
-            font-size: 7px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-2); opacity: 0.85;
+            font-size: 6.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-2); opacity: 0.85; white-space: nowrap;
         }
 
         /* --- BACK SIDE --- */
         .card-back {
-            display: flex; align-items: center; justify-content: center; padding: 22px 26px; height: 100%;
+            display: flex; align-items: center; justify-content: center; padding: 22px 28px; height: 100%;
         }
         .back-content {
             position: relative; z-index: 5; display: flex; width: 100%; height: 100%; gap: 20px;
@@ -135,7 +129,7 @@
         /* The QR Code Container */
         .qr-container { display: flex; flex-direction: column; align-items: center; gap: 3px; }
         .qr-code {
-            width: 54px; height: 54px; border-radius: 2px; mix-blend-mode: multiply;
+            width: 56px; height: 56px; border-radius: 2px; mix-blend-mode: multiply;
         }
         .qr-label {
             font-size: 5.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-2); text-align: center;
@@ -143,7 +137,6 @@
 
         /* Clean Contact List */
         .contact-list { display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: center; }
-        .contact-website { font-size: 8px; font-weight: 800; color: var(--accent); letter-spacing: 0.03em; }
         .contact-value { font-size: 7.5px; font-weight: 600; color: var(--text-1); letter-spacing: 0.01em; }
         .contact-location { font-size: 6px; font-weight: 700; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 2px; }
 
@@ -164,18 +157,17 @@
             
             <div class="card-front-top">
                 <div class="logo-sk-large"><span class="s">S</span><span class="k gradient-text">K</span><span class="dot">.</span></div>
-                <div class="front-portfolio-badge">sonalkamble.dev</div>
             </div>
             
             <div class="front-bottom">
                 <div class="identity-text">
                     <div class="name">Sonal Kamble</div>
-                    <div class="title">Lead Software Engineer · Full-Stack &amp; AI Systems</div>
+                    <div class="title">AI-Native Lead Software Engineer</div>
                 </div>
 
                 <div class="product-highlight">
-                    <div class="product-name gradient-text">AI Systems &amp; Modern Architecture</div>
-                    <div class="product-desc">Aura AI Engine · Enterprise Digital Platforms</div>
+                    <div class="product-name gradient-text">10x AI-Augmented Builder</div>
+                    <div class="product-desc">Agentic Workflows · Enterprise Full-Stack</div>
                 </div>
             </div>
 
@@ -210,7 +202,6 @@
                         <div class="qr-label">Scan For Portfolio</div>
                     </div>
                     <div class="contact-list">
-                        <div class="contact-website">sonalkamble.dev</div>
                         <div class="contact-value">sonal@sonalkamble.dev</div>
                         <div class="contact-value">845-745-6662</div>
                         <div class="contact-location">New York, USA · SUNY New Paltz</div>
