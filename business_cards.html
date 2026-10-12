@@ -203,6 +203,7 @@
         .card-a-block { display: flex; flex-direction: column; gap: 2px; }
         .card-a-block-title {
             font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; font-size: 13px; line-height: 1.2;
+            white-space: nowrap;
         }
         .card-a-block-desc { font-size: 7px; line-height: 1.5; color: var(--text-2); font-weight: 500; }
         .card-a-block-link { font-size: 6.5px; font-weight: 700; color: var(--accent); letter-spacing: 0.04em; }
@@ -246,12 +247,11 @@
         .card-b-title {
             font-size: 7.5px; text-transform: uppercase; letter-spacing: 0.18em; font-weight: 800; color: var(--text-2); margin-top: 3px;
         }
-        .card-b-techpills {
-            display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap;
+        .card-b-tagline {
+            font-size: 6.8px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--accent); margin-top: 4px;
         }
-        .techpill {
-            font-size: 6px; font-weight: 700; color: var(--text-1); background: rgba(30, 10, 20, 0.05);
-            border: 1px solid rgba(30, 10, 20, 0.08); padding: 2px 6px; border-radius: 4px; letter-spacing: 0.02em;
+        .card-b-bio {
+            font-size: 7.2px; line-height: 1.4; color: var(--text-2); font-weight: 500; margin-top: 3px; max-width: 95%;
         }
         .card-b-flagships {
             border-top: 1px solid rgba(139, 103, 200, 0.25); padding-top: 8px; margin-top: 8px;
@@ -262,6 +262,7 @@
         }
         .card-b-proj-title {
             font-family: 'Playfair Display', serif; font-weight: 700; font-size: 13px; line-height: 1.1;
+            white-space: nowrap;
         }
         .card-b-proj-sub {
             font-size: 6.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-2);
@@ -283,6 +284,7 @@
         }
         .card-b-metric-title {
             font-family: 'Playfair Display', serif; font-weight: 700; font-size: 12px; line-height: 1.1;
+            white-space: nowrap;
         }
         .card-b-metric-tag {
             font-family: 'JetBrains Mono', monospace; font-size: 6px; font-weight: 700; color: var(--accent);
@@ -328,7 +330,10 @@
             display: flex; flex-direction: column; justify-content: center; gap: 8px;
         }
         .card-c-prod { display: flex; flex-direction: column; gap: 1px; }
-        .card-c-prod-name { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; font-style: italic; }
+        .card-c-prod-name {
+            font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; font-style: italic;
+            white-space: nowrap;
+        }
         .card-c-prod-desc { font-size: 6.8px; color: var(--text-2); font-weight: 500; }
 
         /* ==============================================================
@@ -375,9 +380,9 @@
         <p>Specially architected for <strong>GHC 2026</strong>. Review the 3 recruiter-calibrated designs below, click the tabs to preview, and print on 3.5" × 2.0" cardstock.</p>
         
         <div class="tab-controls">
-            <button class="tab-btn active" onclick="switchTab('design-b')">Option 1: Recruiter Magnet (Recommended for Big Tech)</button>
-            <button class="tab-btn" onclick="switchTab('design-a')">Option 2: Founder &amp; Architect (Beloved Classic)</button>
-            <button class="tab-btn" onclick="switchTab('design-c')">Option 3: Editorial Prestige (Minimalist)</button>
+            <button class="tab-btn active" onclick="switchTab('design-b', this)">Option 1: Recruiter Magnet (Systems &amp; Flagships)</button>
+            <button class="tab-btn" onclick="switchTab('design-c', this)">Option 3: Editorial Prestige (Clean Minimalist)</button>
+            <button class="tab-btn" onclick="switchTab('design-a', this)">Option 2: Beloved Classic (Founder)</button>
         </div>
         <div class="print-hint">
             💡 <strong>Print Ready:</strong> Press <code>Cmd + P</code> anytime. It automatically formats to standard 3.5" × 2" cards.
@@ -389,7 +394,7 @@
          Directly answers: Who she is, what roles she fits, and her 2 flagships
          =================================================================== -->
     <div id="design-b" class="showcase-section active-section">
-        <div class="card-label">Design 1: The Recruiter Magnet (Optimized for FAANG / Big Tech Engineers &amp; Managers)</div>
+        <div class="card-label">Option 1: The Recruiter Magnet (Engineered for FAANG / Big Tech SWE Leadership)</div>
         <div class="card-pair">
             
             <!-- FRONT -->
@@ -399,19 +404,14 @@
                 <div class="card-b-front">
                     <div class="card-b-top-row">
                         <div class="logo-sk-classic"><span class="s">S</span><span class="k gradient-text">K</span><span class="dot">.</span></div>
-                        <div class="card-b-badge">MS CS · GPA 3.80</div>
+                        <div class="card-b-badge">MS Computer Science</div>
                     </div>
 
                     <div>
                         <div class="card-b-name">Sonal Kamble</div>
-                        <div class="card-b-title">Lead Software Engineer &amp; Architect</div>
-                        <div class="card-b-techpills">
-                            <span class="techpill">Java 21</span>
-                            <span class="techpill">Spring Boot 3</span>
-                            <span class="techpill">WebSockets</span>
-                            <span class="techpill">Docker</span>
-                            <span class="techpill">Gemini AI</span>
-                        </div>
+                        <div class="card-b-title">Lead Software Engineer</div>
+                        <div class="card-b-tagline">Distributed Systems &middot; Relational AI &middot; Cloud Architecture</div>
+                        <div class="card-b-bio">Architecting resilient backend systems &amp; zero-cost cloud platforms.</div>
                     </div>
 
                     <div class="card-b-flagships">
@@ -421,7 +421,7 @@
                         </div>
                         <div class="card-b-proj" style="text-align: right;">
                             <div class="card-b-proj-title gradient-text">Sunny Stack</div>
-                            <div class="card-b-proj-sub">Zero-Cost Modernization</div>
+                            <div class="card-b-proj-sub">Zero-Cost Cloud Platform</div>
                         </div>
                     </div>
                 </div>
@@ -441,15 +441,15 @@
                                     <span class="card-b-metric-title gradient-text">Aura AI Engine</span>
                                     <span class="card-b-metric-tag">theauragroup.tech</span>
                                 </div>
-                                <div class="card-b-metric-desc">Real-time behavioral algorithms using Google Gemini &amp; STOMP WebSockets for zero-latency synchronization.</div>
+                                <div class="card-b-metric-desc">Real-time behavioral algorithms using Google Gemini &amp; STOMP WebSockets for sub-100ms synchronization.</div>
                             </div>
 
                             <div class="card-b-metric-item">
                                 <div class="card-b-metric-header">
                                     <span class="card-b-metric-title gradient-text">Sunny Stack</span>
-                                    <span class="card-b-metric-tag">littleoneslearningcenter.org</span>
+                                    <span class="card-b-metric-tag">Zero-Cost Cloud</span>
                                 </div>
-                                <div class="card-b-metric-desc">Production Java 21 &amp; SSR platform replacing 20-yr legacy WordPress with 85% reduced network payload.</div>
+                                <div class="card-b-metric-desc">Production Java 21 &amp; SSR architecture powering 6 client deployments with zero operational cost and 85% reduced payload.</div>
                             </div>
                         </div>
 
@@ -474,10 +474,60 @@
     </div>
 
     <!-- ===================================================================
-         DESIGN A: THE FOUNDER & ARCHITECT CLASSIC (Beloved Original)
+         DESIGN C: EDITORIAL PRESTIGE (High Contrast & Pure Minimalism)
+         =================================================================== -->
+    <div id="design-c" class="showcase-section" style="display: none;">
+        <div class="card-label">Option 3: Editorial Prestige (Minimalist Monogram)</div>
+        <div class="card-pair">
+            
+            <!-- FRONT -->
+            <div class="business-card">
+                <div class="bg-canvas"></div>
+                <div class="noise-overlay"></div>
+                <div class="card-c-front">
+                    <div class="logo-sk-c"><span class="s">S</span><span class="k gradient-text">K</span><span class="dot">.</span></div>
+                    <div class="card-c-name">Sonal Kamble</div>
+                    <div class="card-c-title">Lead Software Engineer</div>
+                    <div class="card-c-divider"></div>
+                    <div class="card-c-sub">Distributed Systems &middot; Relational AI</div>
+                </div>
+            </div>
+
+            <!-- BACK -->
+            <div class="business-card">
+                <div class="bg-canvas" style="transform: scaleX(-1) scaleY(-1);"></div>
+                <div class="noise-overlay"></div>
+                <div class="card-c-back">
+                    <div class="card-c-left">
+                        <div class="card-c-prod">
+                            <div class="card-c-prod-name gradient-text">Aura</div>
+                            <div class="card-c-prod-desc">Real-time relational AI engine &middot; theauragroup.tech</div>
+                        </div>
+                        <div class="card-c-prod">
+                            <div class="card-c-prod-name gradient-text">Sunny Stack</div>
+                            <div class="card-c-prod-desc">Zero-cost cloud architecture &middot; 6 production platforms</div>
+                        </div>
+                        <div class="card-a-contacts" style="text-align: left; margin-top: 4px;">
+                            <div class="card-a-contact-item">sonal@sonalkamble.dev · 845-745-6662</div>
+                            <div class="card-a-contact-sub" style="margin-top: 1px;">New York, NY · SUNY New Paltz</div>
+                        </div>
+                    </div>
+
+                    <div class="qr-box">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sonalkamble.dev&color=1e0a14&bgcolor=fdf9f7&margin=0" alt="QR Code" class="qr-img">
+                        <div class="qr-caption">Scan Portfolio</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         DESIGN A: THE FOUNDER & CLASSIC (Beloved Original)
          =================================================================== -->
     <div id="design-a" class="showcase-section" style="display: none;">
-        <div class="card-label">Design 2: Founder &amp; Lead Architect (Beloved Classic)</div>
+        <div class="card-label">Option 2: Beloved Classic (Founder &amp; Lead Engineer)</div>
         <div class="card-pair">
             
             <!-- FRONT -->
@@ -489,7 +539,7 @@
                     
                     <div>
                         <div class="card-a-name">Sonal Kamble</div>
-                        <div class="card-a-title">Founder &amp; Lead Architect</div>
+                        <div class="card-a-title">Lead Software Engineer &amp; Founder</div>
 
                         <div class="card-a-highlight">
                             <div class="card-a-prodname gradient-text">Aura.</div>
@@ -515,8 +565,7 @@
                             </div>
                             <div class="card-a-block">
                                 <div class="card-a-block-title gradient-text">Sunny Stack</div>
-                                <div class="card-a-block-desc">Enterprise-grade legacy modernization resulting in zero-cost operational infrastructure.</div>
-                                <div class="card-a-block-link">littleoneslearningcenter.org</div>
+                                <div class="card-a-block-desc">Zero-cost enterprise cloud architecture powering 6 production platforms.</div>
                             </div>
                         </div>
 
@@ -539,67 +588,17 @@
         </div>
     </div>
 
-    <!-- ===================================================================
-         DESIGN C: EDITORIAL PRESTIGE (High Contrast & Pure Minimalism)
-         =================================================================== -->
-    <div id="design-c" class="showcase-section" style="display: none;">
-        <div class="card-label">Design 3: Editorial Prestige (Minimalist Monogram)</div>
-        <div class="card-pair">
-            
-            <!-- FRONT -->
-            <div class="business-card">
-                <div class="bg-canvas"></div>
-                <div class="noise-overlay"></div>
-                <div class="card-c-front">
-                    <div class="logo-sk-c"><span class="s">S</span><span class="k gradient-text">K</span><span class="dot">.</span></div>
-                    <div class="card-c-name">Sonal Kamble</div>
-                    <div class="card-c-title">Lead Software Engineer</div>
-                    <div class="card-c-divider"></div>
-                    <div class="card-c-sub">Backend &amp; Distributed Systems</div>
-                </div>
-            </div>
-
-            <!-- BACK -->
-            <div class="business-card">
-                <div class="bg-canvas" style="transform: scaleX(-1) scaleY(-1);"></div>
-                <div class="noise-overlay"></div>
-                <div class="card-c-back">
-                    <div class="card-c-left">
-                        <div class="card-c-prod">
-                            <div class="card-c-prod-name gradient-text">Aura</div>
-                            <div class="card-c-prod-desc">Real-time relational AI engine · theauragroup.tech</div>
-                        </div>
-                        <div class="card-c-prod">
-                            <div class="card-c-prod-name gradient-text">Sunny Stack</div>
-                            <div class="card-c-prod-desc">Java 21 enterprise architecture · littleoneslearningcenter.org</div>
-                        </div>
-                        <div class="card-a-contacts" style="text-align: left; margin-top: 4px;">
-                            <div class="card-a-contact-item">sonal@sonalkamble.dev · 845-745-6662</div>
-                            <div class="card-a-contact-sub" style="margin-top: 1px;">New York, NY · SUNY New Paltz</div>
-                        </div>
-                    </div>
-
-                    <div class="qr-box">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sonalkamble.dev&color=1e0a14&bgcolor=fdf9f7&margin=0" alt="QR Code" class="qr-img">
-                        <div class="qr-caption">Scan Portfolio</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
     <!-- JAVASCRIPT FOR TAB SWITCHING -->
     <script>
-        function switchTab(designId) {
+        function switchTab(designId, btn) {
             // Hide all sections
             document.querySelectorAll('.showcase-section').forEach(sec => {
                 sec.style.display = 'none';
                 sec.classList.remove('active-section');
             });
             // Remove active from all buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
             });
 
             // Show selected section
@@ -610,7 +609,11 @@
             }
 
             // Highlight clicked button
-            event.target.classList.add('active');
+            if (btn) {
+                btn.classList.add('active');
+            } else if (window.event && window.event.target) {
+                window.event.target.classList.add('active');
+            }
         }
     </script>
 
